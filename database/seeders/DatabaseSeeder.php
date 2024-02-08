@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,11 +22,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Category::create([
+       /*  Category::create([
              'name' => 'Computers'
         ]);
         Category::create([
             'name' => 'Books'
-        ]);
+        ]); */
+
+
+       Tag::create([
+            'name' => 'on line'
+       ]);
+       Tag::create([
+           'name' => 'Trending'
+       ]);
     }
 }
