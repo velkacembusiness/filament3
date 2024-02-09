@@ -47,13 +47,14 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(), 
+                Tables\Columns\TextInputColumn::make('name')->rules(['required', 'min:3'])->sortable()->searchable(), 
                 Tables\Columns\TextColumn::make('price')->sortable()
                 ->money('dzd') 
                 ->getStateUsing(function (Product $record): float { 
                     return $record->price / 100; 
                 })
                 ->alignment(Alignment::End),
+                Tables\Columns\ToggleColumn::make('is_active'),
                 Tables\Columns\TextColumn::make('status')
                 ->badge()
                 ->color(fn (string $state): string => match ($state) {
