@@ -28,11 +28,16 @@ class ProductResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
+        return $form->schema([
+                Forms\Components\Tabs::make()->tabs([
+                Forms\Components\Tabs\Tab::make('Main data')
+                ->schema([
                 Forms\Components\TextInput::make('name')->required()->unique(ignoreRecord: true),
                 Forms\Components\TextInput::make('price')->required()->rule('numeric'),
                 //Forms\Components\Select::make('status')
+            ]),
+            Forms\Components\Tabs\Tab::make('Additional data')
+                ->schema([
                 Forms\Components\Radio::make('status') 
                     ->options(self::$statuses),
                 Forms\Components\Select::make('category_id') 
@@ -40,7 +45,11 @@ class ProductResource extends Resource
                 Forms\Components\Select::make('tags') 
                     ->relationship('tags', 'name') 
                     ->multiple(),
-            ]);
+                Forms\Components\RichEditor::make('description') 
+                    ->required(),
+                ]),
+            ])
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
