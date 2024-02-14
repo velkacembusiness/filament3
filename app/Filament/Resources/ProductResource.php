@@ -18,13 +18,20 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+
+    protected static ?int $navigationSort = 1;
 
     protected static array $statuses = [ // it should be static because others methods are static you need to use self
         'in stock' => 'in stock',
         'sold out' => 'sold out',
         'coming soon' => 'coming soon',
     ];
+
+    public static function getNavigationBadge(): ?string
+    {
+        return Product::whereDate('created_at', today())->count() ? 'NEW' : '';
+    }
 
     public static function form(Form $form): Form
     {
