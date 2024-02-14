@@ -22,6 +22,15 @@ class ProductResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    protected static ?string $navigationLabel = 'All products';
+
+    //protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'description'];
+    }
+
     protected static array $statuses = [ // it should be static because others methods are static you need to use self
         'in stock' => 'in stock',
         'sold out' => 'sold out',

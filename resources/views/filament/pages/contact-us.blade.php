@@ -4,4 +4,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at nisl faucib
 Pellentesque malesuada, turpis eget placerat tincidunt, felis turpis imperdiet quam, sed pharetra erat ex eu nisi.
  
 Aenean ex sapien, scelerisque sit amet lectus in, placerat tempor dui. Nam malesuada tempor condimentum.
+
+
+if you need to translate manualy all things    ::::::::::    php artisan vendor:publish --tag=filament-panels-translations
+
 </x-filament-panels::page>
